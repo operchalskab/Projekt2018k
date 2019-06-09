@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.thymeleaf.util.StringUtils;
 import pl.edu.wszib.projekt.dao.SelectedRoutDao;
 import pl.edu.wszib.projekt.domain.SelectedRout;
@@ -24,6 +25,12 @@ public class SelectedRoutController {
     @Autowired
     SelectedRoutDao selectedRoutDao;
 
+    private List<SelectedRout> listRouts;
+
+    public SelectedRoutController() {
+        listRouts = generateList();
+    }
+
     @GetMapping({"/select","/select/{rout}"})
     public String selectRoutPage(@PathVariable(required = false) String rout, Model model){
 
@@ -31,18 +38,47 @@ public class SelectedRoutController {
             selectedRoutDao.save(new SelectedRout(rout,new Date()));
         }
 
-        String [] routs = {"Ex libris" , "Ja nie latam", "Blondynka", "Luz Bluszcz", "Schodki", "Zemsta"};
-//            List<String> routs = new ArrayList<>();
-//            routs.add("Ex Libris");
-//            routs.add("Ja nie latam");
-
-
+      //  List<SelectedRout> routs= generateList();
         model.addAttribute("title", title);
-        model.addAttribute("routs", routs);
+        model.addAttribute("routs", listRouts);
 
         return "select";
     }
 
 
-}
+    @GetMapping({"forms"})
+    public String forms(Model model){
+
+        model.addAttribute("rout",new SelectedRout());
+        return "formsTemplate";
+    }
+
+    @PostMapping("formsSave")
+    public String formsSave(SelectedRout selectedRout, Model model){
+        listRouts.add(selectedRout);
+        return "succesTemplate";
+    }
+
+        private List<SelectedRout>generateList(){
+        List<SelectedRout> routs = new ArrayList<>();
+
+            SelectedRout selectedRout1 = new SelectedRout();
+            selectedRout1.setRout("EX libris");
+            routs.add(selectedRout1);
+
+        SelectedRout selectedRout2 = new SelectedRout();
+        selectedRout2.setRout("Zemsta");
+        routs.add(selectedRout2);
+
+        SelectedRout selectedRout3 = new SelectedRout();
+        selectedRout3.setRout("Inna");
+        routs.add(selectedRout3);
+
+        return routs;
+
+        }
+    }
+
+
+
 

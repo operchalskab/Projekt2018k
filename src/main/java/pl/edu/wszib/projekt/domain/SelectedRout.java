@@ -17,10 +17,6 @@ public class SelectedRout {
     public SelectedRout() {
     }
 
-    public SelectedRout(String rout) {
-        this.rout = rout;
-    }
-
     public SelectedRout(String rout, Date ctime) {
         this.rout = rout;
         this.ctime = ctime;

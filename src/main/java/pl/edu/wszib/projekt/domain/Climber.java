@@ -14,6 +14,9 @@ public class Climber {
     @Column(unique = true)
     private String imie;
 
+    @Column(unique = true)
+    private String nazwisko;
+
     @OneToMany
     @JoinColumn(name="climber_id")
     List<SelectedRout> selectedRouts;
@@ -48,6 +51,14 @@ public class Climber {
 
     public void setSelectedRouts(List<SelectedRout> selectedRouts) {
         this.selectedRouts = selectedRouts;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
     }
 }
 

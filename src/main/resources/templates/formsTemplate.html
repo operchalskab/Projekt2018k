@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+    <!--    <title>Title</title>-->
+</head>
+<body>
+
+    <form th:action="@{/formsSave}"th:object="${rout}" method="post"></form>
+    <label for="firstName">Nazwa drogi</label>
+    <input id="firstName" type="text" th:field="*{rout}">
+
+
+    <input type="submit" value="Zapisz">
+
+</body>
+</html>
