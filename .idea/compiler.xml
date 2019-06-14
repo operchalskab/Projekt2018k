@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="moj" />
         <module name="projekt" />
+        <module name="Projekt2018k_poprawa" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Projekt2018k_poprawa" options="-parameters" />
       <module name="moj" options="-parameters" />
       <module name="projekt" options="-parameters" />
     </option>

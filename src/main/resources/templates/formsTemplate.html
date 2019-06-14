@@ -7,12 +7,12 @@
 </head>
 <body>
 
-    <form th:action="@{/formsSave}"th:object="${rout}" method="post"></form>
-    <label for="firstName">Nazwa drogi</label>
-    <input id="firstName" type="text" th:field="*{rout}">
+    <form th:action="@{/formsSave}"th:object="${rout}" method="post">
+    <label for="rout">Nazwa drogi</label>
+    <input id="rout" type="text" th:field="*{rout}">
 
 
     <input type="submit" value="Zapisz">
-
+    </form>
 </body>
 </html>

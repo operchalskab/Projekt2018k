@@ -38,9 +38,9 @@ public class SelectedRoutController {
             selectedRoutDao.save(new SelectedRout(rout,new Date()));
         }
 
-      //  List<SelectedRout> routs= generateList();
+        List<SelectedRout> routs= generateList();
         model.addAttribute("title", title);
-        model.addAttribute("routs", listRouts);
+        model.addAttribute("list", listRouts);
 
         return "select";
     }
@@ -56,7 +56,7 @@ public class SelectedRoutController {
     @PostMapping("formsSave")
     public String formsSave(SelectedRout selectedRout, Model model){
         listRouts.add(selectedRout);
-        return "succesTemplate";
+        return "successTemplate";
     }
 
         private List<SelectedRout>generateList(){
